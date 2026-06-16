@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <div class="navbar__brand">
+    <span class="navbar__logo">⚡</span>
+    <span class="navbar__name">BioGas Monitor</span>
+  </div>
+  <ul class="navbar__links">
+    <li><a routerLink="/app/dashboard">Dashboard</a></li>
+    <li><a routerLink="/app/plants">Mis Plantas</a></li>
+  </ul>
+  <div class="navbar__user">
+    <span>{{ auth.getUser()?.name }}</span>
+    <button (click)="logout()">Cerrar sesión</button>
+  </div>
+</nav>

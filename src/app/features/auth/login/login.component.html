@@ -1,0 +1,26 @@
+<div class="login">
+  <div class="login__card">
+    <div class="login__header">
+      <span class="login__icon">⚡</span>
+      <h1>BioGas Monitor</h1>
+      <p>Accede a tu panel de control</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="login__field">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="demo@empresa.com" />
+      </div>
+      <div class="login__field">
+        <label>Contraseña</label>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="••••••••" />
+      </div>
+
+      <div class="login__error" *ngIf="error">{{ error }}</div>
+
+      <button type="submit" class="login__btn">Entrar</button>
+    </form>
+
+    <p class="login__hint">💡 demo&#64;empresa.com · demo1234</p>
+  </div>
+</div>
