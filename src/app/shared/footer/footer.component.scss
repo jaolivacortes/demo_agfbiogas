@@ -1,8 +1,123 @@
 .footer {
-  text-align: center;
-  padding: 1.5rem;
-  background: #0D1117;
-  border-top: 1px solid #1E2530;
-  color: #4a5568;
-  font-size: 0.85rem;
+  background: #1a1a1a;
+  color: #ccc;
+  margin-top: auto;
+
+  &__logo-img {
+    width: 15.5rem;
+    object-fit: contain;
+  }
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  &__brand { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: center;
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__logo-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  &__logo-tagline {
+    font-size: 0.7rem;
+    color: #ff5445;
+    font-weight: 500;
+  }
+
+  &__tagline {
+    color: #999;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  &__social {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  &__social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #2a2a2a;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: #39a1db;
+      color: #fff;
+    }
+  }
+
+  &__section { display: flex; flex-direction: column; gap: 1rem; }
+
+  &__title {
+    color: #39a1db;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.5;
+
+      svg { flex-shrink: 0; margin-top: 2px; color: #39a1db; }
+    }
+
+    a {
+      color: #999;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover { color: #39a1db; }
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid #2a2a2a;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #555;
+  }
 }

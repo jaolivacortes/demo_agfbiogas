@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Home",
+    "plants": "Our Plants",
+    "biogas": "Biogas Plants",
+    "biomethane": "Biomethane Plants",
+    "mini": "Mini Biogas Plants MPB",
+    "ciad": "CIAD",
+    "news": "News",
+    "videos": "Videos",
+    "contact": "Contact",
+    "login": "Login",
+    "dashboard": "My Dashboard",
+    "logout": "Log out"
+  },
+  "footer": {
+    "tagline": "Engineering company specialized in the biogas industry.",
+    "contact": "Contact",
+    "address": "P.º Fluvial, 15, 3rd floor, 06011, Badajoz",
+    "legal": "Legal notice and quality policy",
+    "cookies": "Cookie policy"
+  }
+}

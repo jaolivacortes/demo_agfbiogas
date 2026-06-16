@@ -1,14 +1,83 @@
-<nav class="navbar">
-  <div class="navbar__brand">
-    <span class="navbar__logo">⚡</span>
-    <span class="navbar__name">BioGas Monitor</span>
-  </div>
-  <ul class="navbar__links">
-    <li><a routerLink="/app/dashboard">Dashboard</a></li>
-    <li><a routerLink="/app/plants">Mis Plantas</a></li>
-  </ul>
-  <div class="navbar__user">
-    <span>{{ auth.getUser()?.name }}</span>
-    <button (click)="logout()">Cerrar sesión</button>
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="navbar__inner">
+
+    <!-- Logo y descripción -->
+    <div class="navbar__logo">
+      <img
+        src="assets/images/logo.jpg"
+        alt="AGF Procesos"
+        class="navbar__logo-img"
+      />
+    </div>
+
+    <!-- Links -->
+    <ul class="navbar__links">
+      <li><a routerLink="/" class="navbar__link">{{ 'nav.home' | translate }}</a></li>
+
+      <!-- Dropdown plantas -->
+      <li class="navbar__dropdown"
+          (mouseenter)="isPlantsOpen=true"
+          (mouseleave)="isPlantsOpen=false">
+        <span class="navbar__link navbar__link--dropdown">
+          {{ 'nav.plants' | translate }}
+          <svg width="12" height="12" viewBox="0 0 12 12" [class.rotated]="isPlantsOpen">
+            <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </span>
+        <div class="navbar__dropdown-menu" [class.open]="isPlantsOpen">
+          <a routerLink="/app/plants" class="navbar__dropdown-item">{{ 'nav.biogas' | translate }}</a>
+          <a routerLink="/app/plants" class="navbar__dropdown-item">{{ 'nav.biomethane' | translate }}</a>
+          <a routerLink="/app/plants" class="navbar__dropdown-item">{{ 'nav.mini' | translate }}</a>
+        </div>
+      </li>
+
+      <li><a routerLink="/" class="navbar__link">{{ 'nav.ciad' | translate }}</a></li>
+      <li><a routerLink="/" class="navbar__link">{{ 'nav.news' | translate }}</a></li>
+      <li><a routerLink="/" class="navbar__link">{{ 'nav.videos' | translate }}</a></li>
+      <li><a routerLink="/" class="navbar__link">{{ 'nav.contact' | translate }}</a></li>
+    </ul>
+
+    <!-- Derecha: idioma + login/perfil -->
+    <div class="navbar__right">
+
+      <!-- Selector idioma -->
+      <div class="navbar__lang">
+        <button *ngFor="let lang of languages"
+                (click)="switchLang(lang.code)"
+                class="navbar__lang-btn"
+                [class.active]="currentLang === lang.code">
+          {{ lang.flag }} {{ lang.label }}
+        </button>
+      </div>
+
+      <!-- No logueado -->
+      <a *ngIf="!auth.isLoggedIn()" routerLink="/login" class="navbar__login-btn">
+        {{ 'nav.login' | translate }}
+      </a>
+
+      <!-- Logueado: perfil -->
+      <div *ngIf="auth.isLoggedIn()"
+           class="navbar__profile"
+           (mouseenter)="isProfileOpen=true"
+           (mouseleave)="isProfileOpen=false">
+        <div class="navbar__avatar">
+          {{ auth.getUser()?.name?.charAt(0) }}
+        </div>
+        <div class="navbar__profile-menu" [class.open]="isProfileOpen">
+          <div class="navbar__profile-info">
+            <span class="navbar__profile-name">{{ auth.getUser()?.name }}</span>
+            <span class="navbar__profile-email">{{ auth.getUser()?.email }}</span>
+          </div>
+          <hr>
+          <a routerLink="/app/dashboard" class="navbar__profile-item">{{ 'nav.dashboard' | translate }}</a>
+          <a routerLink="/app/plants" class="navbar__profile-item">{{ 'nav.plants' | translate }}</a>
+          <hr>
+          <button (click)="logout()" class="navbar__profile-item navbar__profile-item--logout">
+            {{ 'nav.logout' | translate }}
+          </button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </nav>

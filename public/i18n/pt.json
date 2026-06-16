@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Início",
+    "plants": "Nossas Plantas",
+    "biogas": "Plantas de Biogás",
+    "biomethane": "Plantas de Biometano",
+    "mini": "Mini Plantas Biogás MPB",
+    "ciad": "CIAD",
+    "news": "Notícias",
+    "videos": "Vídeos",
+    "contact": "Contato",
+    "login": "Login",
+    "dashboard": "Meu Painel",
+    "logout": "Sair"
+  },
+  "footer": {
+    "tagline": "Empresa de engenharia especializada na indústria do biogás.",
+    "contact": "Contato",
+    "address": "P.º Fluvial, 15, 3.º andar, 06011, Badajoz",
+    "legal": "Aviso legal e política de qualidade",
+    "cookies": "Política de cookies"
+  }
+}
