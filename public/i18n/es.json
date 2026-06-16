@@ -19,5 +19,57 @@
     "address": "P.º Fluvial, 15, planta 3, 06011, Badajoz",
     "legal": "Aviso legal y política de calidad",
     "cookies": "Política de cookies"
+  },
+  "pages": {
+    "home": {
+      "heroTitle": "Ingeniería de Procesos",
+      "heroSubtitle": "Soluciones integrales para la industria del biogás y la energía renovable",
+      "cards": {
+        "engineering": {
+          "title": "Ingeniería",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+        },
+        "experience": {
+          "title": "Experiencia",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur."
+        },
+        "innovation": {
+          "title": "Innovación",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui etiam porta sem malesuada magna mollis."
+        },
+        "sustainability": {
+          "title": "Sostenibilidad",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus."
+        }
+      }
+    },
+    "biogas": {
+      "title": "Plantas de Biogás",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. AGF Procesos diseña, construye y opera plantas de biogás de alta eficiencia. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    },
+    "biomethane": {
+      "title": "Plantas de Biometano",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Especialistas en la producción y purificación de biometano para su inyección en la red de gas natural. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+    },
+    "mini": {
+      "title": "Mini Plantas Biogás MPB",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Soluciones compactas y modulares para explotaciones agrícolas y ganaderas de menor escala. Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+    },
+    "ciad": {
+      "title": "CIAD",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Centro de Investigación y Desarrollo en tecnologías de biogás y valorización energética. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem."
+    },
+    "news": {
+      "title": "Noticias",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mantente informado sobre las últimas novedades, proyectos y avances de AGF Procesos en el sector del biogás. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati."
+    },
+    "videos": {
+      "title": "Vídeos",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Accede a nuestra biblioteca de vídeos sobre plantas de biogás, procesos de ingeniería y casos de éxito. Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ponte en contacto con nuestro equipo para consultas sobre proyectos, ingeniería de procesos o colaboraciones. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est."
+    }
   }
 }

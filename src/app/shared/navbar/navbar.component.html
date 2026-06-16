@@ -1,83 +1,120 @@
-<nav class="navbar" [class.scrolled]="isScrolled">
-  <div class="navbar__inner">
+<nav class="navbar" [class.scrolled]="isScrolled" [class.menu-open]="isMobileMenuOpen">
+  <div class="navbar__wrapper">
 
-    <!-- Logo y descripción -->
-    <div class="navbar__logo">
-      <img
-        src="assets/images/logo.jpg"
-        alt="AGF Procesos"
-        class="navbar__logo-img"
-      />
-    </div>
+    <!-- Bloque principal centrado -->
+    <div class="navbar__inner">
 
-    <!-- Links -->
-    <ul class="navbar__links">
-      <li><a routerLink="/" class="navbar__link">{{ 'nav.home' | translate }}</a></li>
-
-      <!-- Dropdown plantas -->
-      <li class="navbar__dropdown"
-          (mouseenter)="isPlantsOpen=true"
-          (mouseleave)="isPlantsOpen=false">
-        <span class="navbar__link navbar__link--dropdown">
-          {{ 'nav.plants' | translate }}
-          <svg width="12" height="12" viewBox="0 0 12 12" [class.rotated]="isPlantsOpen">
-            <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          </svg>
-        </span>
-        <div class="navbar__dropdown-menu" [class.open]="isPlantsOpen">
-          <a routerLink="/app/plants" class="navbar__dropdown-item">{{ 'nav.biogas' | translate }}</a>
-          <a routerLink="/app/plants" class="navbar__dropdown-item">{{ 'nav.biomethane' | translate }}</a>
-          <a routerLink="/app/plants" class="navbar__dropdown-item">{{ 'nav.mini' | translate }}</a>
-        </div>
-      </li>
-
-      <li><a routerLink="/" class="navbar__link">{{ 'nav.ciad' | translate }}</a></li>
-      <li><a routerLink="/" class="navbar__link">{{ 'nav.news' | translate }}</a></li>
-      <li><a routerLink="/" class="navbar__link">{{ 'nav.videos' | translate }}</a></li>
-      <li><a routerLink="/" class="navbar__link">{{ 'nav.contact' | translate }}</a></li>
-    </ul>
-
-    <!-- Derecha: idioma + login/perfil -->
-    <div class="navbar__right">
-
-      <!-- Selector idioma -->
-      <div class="navbar__lang">
-        <button *ngFor="let lang of languages"
-                (click)="switchLang(lang.code)"
-                class="navbar__lang-btn"
-                [class.active]="currentLang === lang.code">
-          {{ lang.flag }} {{ lang.label }}
-        </button>
-      </div>
-
-      <!-- No logueado -->
-      <a *ngIf="!auth.isLoggedIn()" routerLink="/login" class="navbar__login-btn">
-        {{ 'nav.login' | translate }}
+      <a routerLink="/" class="navbar__logo" (click)="closeMobileMenu()">
+        <img src="assets/images/logo.jpg" alt="AGF Procesos" class="navbar__logo-img" />
       </a>
 
-      <!-- Logueado: perfil -->
-      <div *ngIf="auth.isLoggedIn()"
-           class="navbar__profile"
-           (mouseenter)="isProfileOpen=true"
-           (mouseleave)="isProfileOpen=false">
-        <div class="navbar__avatar">
-          {{ auth.getUser()?.name?.charAt(0) }}
-        </div>
-        <div class="navbar__profile-menu" [class.open]="isProfileOpen">
-          <div class="navbar__profile-info">
-            <span class="navbar__profile-name">{{ auth.getUser()?.name }}</span>
-            <span class="navbar__profile-email">{{ auth.getUser()?.email }}</span>
+      <button
+        class="navbar__toggle"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="isMobileMenuOpen"
+        aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar__links" [class.open]="isMobileMenuOpen">
+        <li class="navbar__links-item navbar__links-item--home">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+             class="navbar__link" (click)="closeMobileMenu()">
+            <span class="navbar__link-text">{{ 'nav.home' | translate }}</span>
+          </a>
+        </li>
+
+        <li class="navbar__dropdown navbar__links-item navbar__links-item--plants"
+            (mouseenter)="onPlantsEnter()"
+            (mouseleave)="onPlantsLeave()">
+          <span class="navbar__link navbar__link--dropdown" (click)="togglePlantsMobile()">
+            <span class="navbar__link-text">{{ 'nav.plants' | translate }}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" [class.rotated]="isPlantsOpen">
+              <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </span>
+          <div class="navbar__dropdown-menu" [class.open]="isPlantsOpen">
+            <a routerLink="/plantas/biogas" class="navbar__dropdown-item" (click)="closeMobileMenu()">
+              {{ 'nav.biogas' | translate }}
+            </a>
+            <a routerLink="/plantas/biomethane" class="navbar__dropdown-item" (click)="closeMobileMenu()">
+              {{ 'nav.biomethane' | translate }}
+            </a>
+            <a routerLink="/plantas/mini" class="navbar__dropdown-item" (click)="closeMobileMenu()">
+              {{ 'nav.mini' | translate }}
+            </a>
           </div>
-          <hr>
-          <a routerLink="/app/dashboard" class="navbar__profile-item">{{ 'nav.dashboard' | translate }}</a>
-          <a routerLink="/app/plants" class="navbar__profile-item">{{ 'nav.plants' | translate }}</a>
-          <hr>
-          <button (click)="logout()" class="navbar__profile-item navbar__profile-item--logout">
-            {{ 'nav.logout' | translate }}
-          </button>
+        </li>
+
+        <li class="navbar__links-item navbar__links-item--ciad">
+          <a routerLink="/ciad" routerLinkActive="active" class="navbar__link" (click)="closeMobileMenu()">
+            <span class="navbar__link-text">{{ 'nav.ciad' | translate }}</span>
+          </a>
+        </li>
+        <li class="navbar__links-item navbar__links-item--news">
+          <a routerLink="/noticias" routerLinkActive="active" class="navbar__link" (click)="closeMobileMenu()">
+            <span class="navbar__link-text">{{ 'nav.news' | translate }}</span>
+          </a>
+        </li>
+        <li class="navbar__links-item navbar__links-item--videos">
+          <a routerLink="/videos" routerLinkActive="active" class="navbar__link" (click)="closeMobileMenu()">
+            <span class="navbar__link-text">{{ 'nav.videos' | translate }}</span>
+          </a>
+        </li>
+        <li class="navbar__links-item navbar__links-item--contact">
+          <a routerLink="/contacto" routerLinkActive="active" class="navbar__link" (click)="closeMobileMenu()">
+            <span class="navbar__link-text">{{ 'nav.contact' | translate }}</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="navbar__actions">
+        <a *ngIf="!auth.isLoggedIn()" routerLink="/login" class="navbar__login-btn" (click)="closeMobileMenu()">
+          {{ 'nav.login' | translate }}
+        </a>
+
+        <div *ngIf="auth.isLoggedIn()"
+             class="navbar__profile"
+             (mouseenter)="isProfileOpen = true"
+             (mouseleave)="isProfileOpen = false">
+          <div class="navbar__avatar">
+            {{ auth.getUser()?.name?.charAt(0) }}
+          </div>
+          <div class="navbar__profile-menu" [class.open]="isProfileOpen">
+            <div class="navbar__profile-info">
+              <span class="navbar__profile-name">{{ auth.getUser()?.name }}</span>
+              <span class="navbar__profile-email">{{ auth.getUser()?.email }}</span>
+            </div>
+            <hr>
+            <a routerLink="/app/dashboard" class="navbar__profile-item" (click)="closeMobileMenu()">
+              {{ 'nav.dashboard' | translate }}
+            </a>
+            <a routerLink="/app/plants" class="navbar__profile-item" (click)="closeMobileMenu()">
+              {{ 'nav.plants' | translate }}
+            </a>
+            <hr>
+            <button (click)="logout()" class="navbar__profile-item navbar__profile-item--logout">
+              {{ 'nav.logout' | translate }}
+            </button>
+          </div>
         </div>
       </div>
+    </div>
 
+    <!-- Idiomas: fuera del bloque centrado, a la derecha del todo -->
+    <div class="navbar__lang-outer">
+      <button *ngFor="let lang of languages"
+              (click)="switchLang(lang.code)"
+              class="navbar__lang-btn"
+              [class.active]="currentLang === lang.code"
+              [attr.aria-label]="lang.label"
+              [title]="lang.label">
+        <span class="navbar__flag" [innerHTML]="lang.flagSvg"></span>
+      </button>
     </div>
   </div>
 </nav>
+
+<div class="navbar__backdrop" [class.open]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>

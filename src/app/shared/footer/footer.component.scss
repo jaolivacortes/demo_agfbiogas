@@ -1,5 +1,5 @@
 .footer {
-  background: #1a1a1a;
+  background: var(--color-black);
   color: #ccc;
   margin-top: auto;
 
@@ -17,43 +17,25 @@
     gap: 3rem;
   }
 
-  &__brand { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
 
   &__logo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     justify-content: center;
-
-    div {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-
-  &__logo-name {
-    font-weight: 700;
-    font-size: 1rem;
-    color: #fff;
-    line-height: 1.2;
-  }
-
-  &__logo-tagline {
-    font-size: 0.7rem;
-    color: #ff5445;
-    font-weight: 500;
-  }
-
-  &__tagline {
-    color: #999;
-    font-size: 0.88rem;
-    line-height: 1.6;
-    margin: 0;
   }
 
   &__social {
     display: flex;
     gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__social-link {
@@ -69,15 +51,19 @@
     transition: background 0.2s, color 0.2s;
 
     &:hover {
-      background: #39a1db;
-      color: #fff;
+      background: var(--color-blue);
+      color: var(--color-white);
     }
   }
 
-  &__section { display: flex; flex-direction: column; gap: 1rem; }
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
   &__title {
-    color: #39a1db;
+    color: var(--color-blue);
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -101,7 +87,11 @@
       color: #999;
       line-height: 1.5;
 
-      svg { flex-shrink: 0; margin-top: 2px; color: #39a1db; }
+      svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+        color: var(--color-blue);
+      }
     }
 
     a {
@@ -109,7 +99,7 @@
       text-decoration: none;
       transition: color 0.2s;
 
-      &:hover { color: #39a1db; }
+      &:hover { color: var(--color-blue); }
     }
   }
 
@@ -119,5 +109,35 @@
     text-align: center;
     font-size: 0.8rem;
     color: #555;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .footer__section {
+    align-items: center;
+  }
+
+  .footer__list li {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__inner {
+    padding: 2rem 1.25rem;
+  }
+
+  .footer__logo-img {
+    width: 12rem;
+  }
+
+  .footer__bottom {
+    padding: 1rem 1.25rem;
   }
 }

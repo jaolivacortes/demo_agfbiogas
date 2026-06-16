@@ -1,16 +1,114 @@
-* {
+// ─── Brand palette ───────────────────────────────────────────
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-blue: #39a1db;
+  --color-blue-dark: #2b8bc4;
+  --color-yellow: #f9bc80;
+  --color-red: #ff5445;
+
+  --color-text: #1a1a1a;
+  --color-text-muted: #666666;
+  --color-border: #eeeeee;
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+
+  --navbar-height: 70px;
+}
+
+// ─── Reset & base ────────────────────────────────────────────
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #f8f9fa;
-  color: #333;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 main {
-  padding-top: 70px;
-  min-height: calc(100vh - 70px);
+  padding-top: var(--navbar-height);
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+a {
+  color: var(--color-blue);
+}
+
+// ─── Shared utilities ────────────────────────────────────────
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// ─── App area (dashboard / plants) ───────────────────────────
+.app-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: 1.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-blue);
+  color: var(--color-white);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+
+  &:hover {
+    background: var(--color-blue-dark);
+    transform: translateY(-1px);
+  }
+}
+
+// Status badges (plants)
+.status-online {
+  background: rgba(57, 161, 219, 0.12);
+  color: var(--color-blue);
+}
+
+.status-maintenance {
+  background: rgba(249, 188, 128, 0.2);
+  color: #c47a30;
+}
+
+.status-offline {
+  background: rgba(255, 84, 69, 0.12);
+  color: var(--color-red);
+}
+
+@media (max-width: 600px) {
+  .app-section {
+    padding: 1.5rem 1.25rem;
+  }
 }

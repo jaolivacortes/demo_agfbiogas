@@ -7,12 +7,12 @@
     margin-bottom: 2rem;
 
     h1 {
-      color: #fff;
+      color: var(--color-black);
       font-size: 1.8rem;
       margin: 0 0 0.5rem;
     }
 
-    p { color: #aab0bc; margin: 0; }
+    p { color: var(--color-text-muted); margin: 0; }
   }
 
   &__grid {
@@ -23,16 +23,17 @@
 }
 
 .plant-card {
-  background: #1E2530;
-  border: 1px solid #2a3444;
-  border-radius: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
   padding: 1.5rem;
   cursor: pointer;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 
   &:hover {
-    border-color: #00C896;
+    border-color: rgba(0, 0, 0, 0.08);
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
 
   &__header {
@@ -43,7 +44,7 @@
   }
 
   &__name {
-    color: #fff;
+    color: var(--color-black);
     font-weight: 600;
     font-size: 1rem;
   }
@@ -55,23 +56,23 @@
     font-weight: 600;
 
     &.online {
-      background: rgba(0, 200, 150, 0.15);
-      color: #00C896;
+      background: rgba(57, 161, 219, 0.12);
+      color: var(--color-blue);
     }
 
     &.maintenance {
-      background: rgba(245, 166, 35, 0.15);
-      color: #F5A623;
+      background: rgba(249, 188, 128, 0.2);
+      color: #c47a30;
     }
 
     &.offline {
-      background: rgba(255, 107, 107, 0.15);
-      color: #ff6b6b;
+      background: rgba(255, 84, 69, 0.12);
+      color: var(--color-red);
     }
   }
 
   &__location {
-    color: #aab0bc;
+    color: var(--color-text-muted);
     font-size: 0.85rem;
     margin-bottom: 1.25rem;
   }
@@ -81,12 +82,12 @@
     justify-content: space-between;
     margin-bottom: 1.25rem;
     padding: 1rem;
-    background: #0D1117;
-    border-radius: 8px;
+    background: var(--color-bg);
+    border-radius: 0;
   }
 
   &__footer {
-    color: #4a5568;
+    color: var(--color-text-muted);
     font-size: 0.75rem;
     text-align: right;
   }
@@ -98,14 +99,20 @@
   align-items: center;
 
   &__value {
-    color: #fff;
+    color: var(--color-black);
     font-weight: 700;
     font-size: 1.1rem;
   }
 
   &__label {
-    color: #aab0bc;
+    color: var(--color-text-muted);
     font-size: 0.75rem;
     margin-top: 0.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .plant-list {
+    padding: 1.5rem 1.25rem;
   }
 }

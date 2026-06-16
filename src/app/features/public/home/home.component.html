@@ -1,0 +1,15 @@
+<section class="home">
+  <header class="home__hero">
+    <div class="home__hero-overlay">
+      <h1 class="home__hero-title">{{ 'pages.home.heroTitle' | translate }}</h1>
+      <p class="home__hero-subtitle">{{ 'pages.home.heroSubtitle' | translate }}</p>
+    </div>
+  </header>
+
+  <div class="home__cards">
+    <article class="home__card" *ngFor="let card of cards">
+      <h2 class="home__card-title">{{ 'pages.home.cards.' + card.key + '.title' | translate }}</h2>
+      <p class="home__card-text">{{ 'pages.home.cards.' + card.key + '.text' | translate }}</p>
+    </article>
+  </div>
+</section>
