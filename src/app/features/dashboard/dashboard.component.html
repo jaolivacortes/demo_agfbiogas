@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+  <div class="dashboard__header">
+    <h1>Bienvenido, {{ user?.name }}</h1>
+    <p>Resumen general de tus instalaciones · <span>Hoy, {{ today | date:'dd MMM yyyy' }}</span></p>
+  </div>
+
+  <div class="dashboard__stats">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <div class="stat-card__icon">{{ stat.icon }}</div>
+      <div class="stat-card__info">
+        <span class="stat-card__value" [style.color]="stat.color">{{ stat.value }}</span>
+        <span class="stat-card__label">{{ stat.label }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard__cta">
+    <h2>Tus plantas</h2>
+    <p>Consulta el estado y métricas detalladas de cada instalación.</p>
+    <a routerLink="/app/plants" class="btn-primary">Ver todas las plantas →</a>
+  </div>
+</div>

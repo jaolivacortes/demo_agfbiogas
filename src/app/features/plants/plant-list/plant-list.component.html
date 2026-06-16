@@ -1,1 +1,38 @@
-<p>plant-list works!</p>
+<div class="plant-list">
+  <div class="plant-list__header">
+    <h1>Mis Plantas</h1>
+    <p>{{ plants.length }} instalaciones registradas</p>
+  </div>
+
+  <div class="plant-list__grid">
+    <div class="plant-card" *ngFor="let plant of plants" [routerLink]="['/app/plants', plant.id]">
+      <div class="plant-card__header">
+        <span class="plant-card__name">{{ plant.name }}</span>
+        <span class="plant-card__status" [ngClass]="plant.status">
+          {{ getStatusLabel(plant.status) }}
+        </span>
+      </div>
+
+      <div class="plant-card__location">📍 {{ plant.location }}</div>
+
+      <div class="plant-card__metrics">
+        <div class="metric">
+          <span class="metric__value">{{ plant.productionM3 }}</span>
+          <span class="metric__label">m³/día</span>
+        </div>
+        <div class="metric">
+          <span class="metric__value">{{ plant.energyKwh }}</span>
+          <span class="metric__label">kWh</span>
+        </div>
+        <div class="metric">
+          <span class="metric__value">{{ plant.efficiency }}%</span>
+          <span class="metric__label">Eficiencia</span>
+        </div>
+      </div>
+
+      <div class="plant-card__footer">
+        Última actualización: {{ plant.lastUpdate }}
+      </div>
+    </div>
+  </div>
+</div>

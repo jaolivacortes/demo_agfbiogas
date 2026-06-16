@@ -1,1 +1,59 @@
-<p>plant-detail works!</p>
+<div class="plant-detail" *ngIf="plant; else notFound">
+
+  <div class="plant-detail__back">
+    <a routerLink="/app/plants">← Volver a mis plantas</a>
+  </div>
+
+  <div class="plant-detail__header">
+    <div>
+      <h1>{{ plant.name }}</h1>
+      <p>📍 {{ plant.location }}</p>
+    </div>
+    <span class="status-badge" [ngClass]="plant.status">
+      {{ getStatusLabel(plant.status) }}
+    </span>
+  </div>
+
+  <div class="plant-detail__stats">
+    <div class="stat-box">
+      <span class="stat-box__icon">⚡</span>
+      <span class="stat-box__value">{{ plant.productionM3 }} m³/día</span>
+      <span class="stat-box__label">Producción de biogás</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-box__icon">🔋</span>
+      <span class="stat-box__value">{{ plant.energyKwh }} kWh</span>
+      <span class="stat-box__label">Energía generada</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-box__icon">📈</span>
+      <span class="stat-box__value">{{ plant.efficiency }}%</span>
+      <span class="stat-box__label">Eficiencia operativa</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-box__icon">🕒</span>
+      <span class="stat-box__value">{{ plant.lastUpdate }}</span>
+      <span class="stat-box__label">Última actualización</span>
+    </div>
+  </div>
+
+  <div class="plant-detail__chart">
+    <h2>Producción semanal (m³/día)</h2>
+    <div class="chart">
+      <div class="chart__bar-group" *ngFor="let data of weeklyData">
+        <div class="chart__bar" [style.height.%]="getBarHeight(data.production)">
+          <span class="chart__value">{{ data.production }}</span>
+        </div>
+        <span class="chart__label">{{ data.day }}</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <p>Planta no encontrada.</p>
+    <a routerLink="/app/plants">← Volver</a>
+  </div>
+</ng-template>
