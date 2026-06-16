@@ -65,6 +65,10 @@
     &--contact { min-width: 7rem; }
   }
 
+  .mobile-only {
+    display: none;
+  }
+
   &__link {
     display: flex;
     align-items: center;
@@ -411,6 +415,14 @@
       justify-content: space-between;
     }
 
+    &__links-item--plants {
+      display: none;
+    }
+
+    .mobile-only {
+      display: list-item;
+    }
+
     &__actions {
       margin-left: auto;
     }
@@ -423,8 +435,21 @@
     &__logo-img { width: 7rem; }
 
     &__lang-outer {
+      display: none;
       padding-right: 0.75rem;
       border-left: none;
+    }
+
+    &__lang-mobile {
+      display: flex;
+      gap: 0.75rem;
+      padding: 1rem 0 0.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    &__lang-btn {
+      width: auto;
+      padding: 0;
     }
 
     &__backdrop {

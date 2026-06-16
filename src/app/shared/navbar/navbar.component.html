@@ -48,6 +48,22 @@
           </div>
         </li>
 
+        <li class="navbar__links-item mobile-only">
+          <a routerLink="/plantas/biogas" class="navbar__link" (click)="closeMobileMenu()">
+            <span class="navbar__link-text">{{ 'nav.biogas' | translate }}</span>
+          </a>
+        </li>
+        <li class="navbar__links-item mobile-only">
+          <a routerLink="/plantas/biomethane" class="navbar__link" (click)="closeMobileMenu()">
+            <span class="navbar__link-text">{{ 'nav.biomethane' | translate }}</span>
+          </a>
+        </li>
+        <li class="navbar__links-item mobile-only">
+          <a routerLink="/plantas/mini" class="navbar__link" (click)="closeMobileMenu()">
+            <span class="navbar__link-text">{{ 'nav.mini' | translate }}</span>
+          </a>
+        </li>
+
         <li class="navbar__links-item navbar__links-item--ciad">
           <a routerLink="/ciad" routerLinkActive="active" class="navbar__link" (click)="closeMobileMenu()">
             <span class="navbar__link-text">{{ 'nav.ciad' | translate }}</span>
@@ -67,6 +83,19 @@
           <a routerLink="/contacto" routerLinkActive="active" class="navbar__link" (click)="closeMobileMenu()">
             <span class="navbar__link-text">{{ 'nav.contact' | translate }}</span>
           </a>
+        </li>
+
+        <li class="navbar__links-item navbar__links-item--lang mobile-only">
+          <div class="navbar__lang-mobile">
+            <button *ngFor="let lang of languages"
+                    (click)="switchLang(lang.code)"
+                    class="navbar__lang-btn"
+                    [class.active]="currentLang === lang.code"
+                    [attr.aria-label]="lang.label"
+                    [title]="lang.label">
+              <span class="navbar__flag" [innerHTML]="lang.flagSvg"></span>
+            </button>
+          </div>
         </li>
       </ul>
 
