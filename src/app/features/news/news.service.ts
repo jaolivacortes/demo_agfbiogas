@@ -38,7 +38,7 @@ export class NewsService {
       subtitle: 'Expertos internacionales comparten buenas prácticas',
       date: '2026-06-12',
       image: 'https://picsum.photos/id/1025/1200/600',
-      category: 'Eventos',
+      category: ['Eventos', 'Formación'],
       excerpt: 'Una jornada para profesionales del sector con ponencias y mesas redondas.',
       content: `
         <p>La jornada técnica sobre digestión anaerobia se celebró con éxito y congregó a expertos internacionales. Los asistentes pudieron escuchar mesas redondas centradas en las últimas tendencias del sector, donde <strong>la innovación y la sostenibilidad</strong> fueron ejes centrales del debate.</p>

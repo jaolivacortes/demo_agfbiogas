@@ -65,6 +65,14 @@ export class NewsPageComponent implements OnInit, OnDestroy {
     this.goTo(item);
   }
 
+  formatCategory(category: string | string[]): string {
+    return Array.isArray(category) ? category.join(', ') : category;
+  }
+
+  getCategories(category: string | string[]): string[] {
+    return Array.isArray(category) ? category : [category];
+  }
+
   goTo(item: NewsItem) {
     this.router.navigate(['/noticias', item.id]);
   }

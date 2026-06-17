@@ -20,7 +20,7 @@ import { NewsItem } from './news.model';
       <div class="news-detail__body container">
         <div class="news-detail__layout">
           <article class="news-detail__main">
-            <div class="news-detail__meta">{{ item.category }} — {{ item.date | date:'longDate' }}</div>
+            <div class="news-detail__meta">{{ formatCategory(item.category) }} — {{ item.date | date:'longDate' }}</div>
             <div class="news-detail__content" [innerHTML]="item.content"></div>
 
             <div class="news-detail__share-row">
@@ -488,6 +488,10 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
       clearInterval(this.miniTimer);
       this.miniTimer = null;
     }
+  }
+
+  formatCategory(category: string | string[]): string {
+    return Array.isArray(category) ? category.join(', ') : category;
   }
 
   miniNext() {

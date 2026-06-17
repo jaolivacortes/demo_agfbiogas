@@ -9,7 +9,7 @@ export interface NewsItem {
   subtitle?: string;
   date: string; // ISO
   image: string;
-  category: string;
+  category: string | string[];
   excerpt: string;
   content: string;
   media?: NewsMedia[];

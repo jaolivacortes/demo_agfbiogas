@@ -43,22 +43,28 @@
 .news-page__indicators {
   position: absolute;
   top: 12px;
-  right: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 12px;
   z-index: 4;
 }
 
 .news-page__indicator {
-  background: rgba(255, 255, 255, 0.25);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   border: none;
-  color: var(--color-white);
-  margin-left: 6px;
-  padding: 6px 8px;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.55);
+  color: transparent;
+  padding: 0;
   cursor: pointer;
 }
 
 .news-page__indicator--active {
-  background: var(--color-blue);
+  background: var(--color-white);
 }
 
 .news-page__progress-wrap {
@@ -99,6 +105,9 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
   padding: 16px;
 }
 
@@ -129,6 +138,7 @@
   padding: 4px 8px;
   border-radius: 12px;
   font-size: 0.8rem;
+  margin-right: 0.2rem
 }
 
 .news-page__item-title {

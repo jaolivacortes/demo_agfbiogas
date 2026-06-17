@@ -23,7 +23,9 @@
   <div *ngFor="let n of news" class="news-page__item" (click)="goTo(n)">
     <img class="news-page__item-image" [src]="n.image" alt="" />
     <div class="news-page__item-meta">
-      <span class="news-page__item-category">{{ n.category }}</span>
+      <ng-container *ngFor="let c of getCategories(n.category)">
+        <span class="news-page__item-category">{{ c }}</span>
+      </ng-container>
       <h2 class="news-page__item-title">{{ n.title }}</h2>
       <p class="news-page__item-excerpt">{{ n.excerpt }}</p>
       <div class="news-page__item-date">{{ n.date | date:'longDate' }}</div>
