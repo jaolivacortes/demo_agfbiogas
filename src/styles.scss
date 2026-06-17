@@ -112,3 +112,22 @@ a {
     padding: 1.5rem 1.25rem;
   }
 }
+
+// styles.scss
+.news-detail__content img,
+.news-detail__content video,
+.news-detail__content iframe,
+.news-detail__content figure {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  padding: 10px;
+}
+
+.news-detail__content figcaption {
+  font-style: italic;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  margin-top: 0.15rem;
+}
