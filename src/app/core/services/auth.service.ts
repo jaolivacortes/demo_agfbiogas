@@ -12,8 +12,8 @@ export class AuthService {
     if (email === this.FAKE_EMAIL && password === this.FAKE_PASS) {
       this.currentUser = {
         email,
-        name: 'Carlos López',
-        company: 'BioEnergía S.L.'
+        name: 'José Oliva',
+        company: 'AGF Biogás'
       };
       localStorage.setItem('biogas_auth', JSON.stringify(this.currentUser));
       return true;
