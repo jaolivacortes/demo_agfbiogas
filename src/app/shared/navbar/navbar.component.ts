@@ -88,6 +88,65 @@ export class NavbarComponent {
   switchLang(code: string) {
     this.currentLang = code;
     this.translate.use(code);
+
+    const googleLangMap: Record<string, string | null> = {
+      es: null,
+      en: 'en',
+      pt: 'pt-PT'
+    };
+
+    const googleCode = googleLangMap[code];
+    if (googleCode) {
+      this.applyGoogleTranslate(googleCode);
+    } else {
+      this.removeGoogleTranslate();
+    }
+  }
+
+  private applyGoogleTranslate(lang: string) {
+    document.cookie = `googtrans=/es/${lang};path=/`;
+    document.cookie = `googtrans=/es/${lang};domain=${location.hostname};path=/`;
+
+    const el = document.getElementById('google_translate_element');
+    if (!el) {
+      const div = document.createElement('div');
+      div.id = 'google_translate_element';
+      div.style.display = 'none';
+      document.body.appendChild(div);
+      this.loadGoogleTranslateScript();
+    } else {
+      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change'));
+      } else {
+        // El script ya está pero el widget aún no inicializó, recarga con la cookie puesta
+        location.reload();
+      }
+    }
+  }
+
+  private removeGoogleTranslate() {
+    document.cookie = 'googtrans=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    document.cookie = `googtrans=;domain=${location.hostname};path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    location.reload();
+  }
+
+  private loadGoogleTranslateScript() {
+    if (document.getElementById('gt-script')) {
+      location.reload();
+      return;
+    }
+    (window as any).googleTranslateElementInit = () => {
+      new (window as any).google.translate.TranslateElement(
+        { pageLanguage: 'es', autoDisplay: false },
+        'google_translate_element'
+      );
+    };
+    const script = document.createElement('script');
+    script.id = 'gt-script';
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.body.appendChild(script);
   }
 
   logout() {
