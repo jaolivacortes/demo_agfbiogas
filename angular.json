@@ -94,6 +94,13 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/demo_agfbiogas/",
+            "dir": "dist/agf-portal/browser"
+          }
         }
       }
     }
