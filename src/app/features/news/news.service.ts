@@ -81,7 +81,7 @@ export class NewsService {
     },
     {
       id: '1',
-      title: 'Acuerdo de colaboración internacional',
+      title: 'Alianza de colaboración internacional',
       subtitle: 'Exportación de tecnología y formación',
       date: '2026-06-16',
       image: 'https://picsum.photos/id/1042/1200/600',
