@@ -1,0 +1,32 @@
+<div class="news-page__header" #header (mouseenter)="stopTimer()" (mouseleave)="startTimer()">
+  <div class="news-page__slides" [style.transform]="slidesTransform">
+    <div class="news-page__slide" *ngFor="let s of headerSlides" [style.background-image]="'url(' + s.image + ')'" (click)="onSlideClick(s)">
+      <div class="news-page__overlay">
+        <div class="news-page__text">
+          <h1 class="news-page__title">{{ s.title }}</h1>
+          <h4 class="news-page__subtitle">{{ s.subtitle }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="news-page__nav news-page__nav--prev" (click)="prev(); progress=0">‹</button>
+  <button class="news-page__nav news-page__nav--next" (click)="next(); progress=0">›</button>
+
+  <div class="news-page__indicators">
+    <button class="news-page__indicator" *ngFor="let s of headerSlides; let i = index" [class.news-page__indicator--active]="i===current" (click)="current=i; progress=0">●</button>
+  </div>
+</div>
+<div class="news-page__progress-wrap"><div class="news-page__progress" [style.width.%]="progress"></div></div>
+
+<section class="news-page__list">
+  <div *ngFor="let n of news" class="news-page__item" (click)="goTo(n)">
+    <img class="news-page__item-image" [src]="n.image" alt="" />
+    <div class="news-page__item-meta">
+      <span class="news-page__item-category">{{ n.category }}</span>
+      <h2 class="news-page__item-title">{{ n.title }}</h2>
+      <p class="news-page__item-excerpt">{{ n.excerpt }}</p>
+      <div class="news-page__item-date">{{ n.date | date:'longDate' }}</div>
+    </div>
+  </div>
+</section>

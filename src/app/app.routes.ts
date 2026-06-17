@@ -36,8 +36,11 @@ export const routes: Routes = [
       },
       {
         path: 'noticias',
-        loadComponent: () => import('./features/public/public-page/public-page.component').then(m => m.PublicPageComponent),
-        data: { pageKey: 'news' }
+        loadComponent: () => import('./features/news/news-page.component').then(m => m.NewsPageComponent)
+      },
+      {
+        path: 'noticias/:id',
+        loadComponent: () => import('./features/news/news-detail.component').then(m => m.NewsDetailComponent)
       },
       {
         path: 'videos',
