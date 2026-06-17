@@ -109,7 +109,7 @@ import { NewsItem } from './news.model';
       }
 
       .news-detail__body {
-        padding: 32px 16px 48px;
+        padding: 0px 16px 48px;
         max-width: 1000px;
         margin: 0 auto;
       }
@@ -123,7 +123,8 @@ import { NewsItem } from './news.model';
       .news-detail__main {
         background: var(--color-surface);
         border: 1px solid var(--color-border);
-        border-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
         padding: 28px;
         min-width: 0;
         width: 100%;
@@ -445,13 +446,17 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
   miniProgress = 0;
   private miniTimer: any;
 
-  constructor(private route: ActivatedRoute, private router: Router, private newsService: NewsService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private newsService: NewsService) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id') || '';
-    this.item = this.newsService.getById(id);
-    this.latestNews = this.newsService.getAll().filter(news => news.id !== id).slice(0, 3);
-    this.startMiniTimer();
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id') || '';
+      this.item = this.newsService.getById(id);
+      this.latestNews = this.newsService.getAll().filter(news => news.id !== id).slice(0, 3);
+      this.miniCurrent = 0;
+      this.miniProgress = 0;
+      this.startMiniTimer();
+    });
   }
 
   ngOnDestroy(): void {
@@ -496,6 +501,7 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
   }
 
   goTo(item: NewsItem) {
+    window.scrollTo(0, 0);
     this.router.navigate(['/noticias', item.id]);
   }
 
